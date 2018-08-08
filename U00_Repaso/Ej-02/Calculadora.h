@@ -2,8 +2,26 @@
 #define REPASO_CALCULADORA_H
 
 
+template <class T, class P>
 class Calculadora {
+public:
+    T sumar(T a, T b) {
+        return a + b;
+    }
+T restar(T a, T b) {
+        return a - b;
+    }
 
+    T dividir(T a, T b) {
+        T tmp;
+        if(b==0)
+            throw 404;
+        return a / b;
+
+    }
+    P multiplicar(T a, T b) {
+        return a * b;
+    }
 };
 
 
