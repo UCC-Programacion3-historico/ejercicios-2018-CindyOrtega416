@@ -1,13 +1,9 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-#include <iostream>
-
 #include <list>
 
-#include "../../U03_Pilas/Pila/nodo.h"
-
-using namespace std;
+#include "nodo.h"
 
 /**
  * Clase que implementa una Lista Enlasada generica, ya que puede
@@ -42,12 +38,6 @@ public:
     void reemplazar(int pos, T dato);
 
     void vaciar();
-
-    void print();
-
-    void fnInvierte();
-
-
 };
 
 
@@ -262,24 +252,6 @@ void Lista<T>::reemplazar(int pos, T dato) {
  */
 template<class T>
 void Lista<T>::vaciar() {}
-
-
-template<class T>
-void Lista<T>::print() {
-    auto *aux = inicio;
-
-    while (aux != nullptr) {
-        cout << aux->getDato()<<" _ ";
-        aux = aux->getNext();
-    }
-}
-
-
-
-
-
-
-
 
 
 #endif //LISTA_H

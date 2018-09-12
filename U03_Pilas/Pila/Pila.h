@@ -12,7 +12,6 @@ template<class T>
 class Pila {
 private:
     nodo<T> *tope;
-
 public:
     Pila();
 
@@ -35,6 +34,7 @@ Pila<T>::Pila() {
     tope = nullptr;
 }
 
+
 /**
  * Destructor de la clase Lista, se encarga de liberar la memoria de todos los nodos
  * utilizados en la lista
@@ -42,9 +42,9 @@ Pila<T>::Pila() {
  */
 template<class T>
 Pila<T>::~Pila() {
-    nodo<T> *aux = tope;
+    nodo<T> aux = tope;
     while (aux != nullptr) {
-        tope = aux->getNext();
+        tope = aux.getNext();
         delete aux;
         aux = tope;
     }
@@ -75,7 +75,7 @@ T Pila<T>::pop() {
     if (tope == nullptr)
         throw 1;
     T dato = tope->getDato();
-    auto *aux = tope;
+    nodo<T> *aux = tope;
     tope = tope->getNext();
     delete aux;
 

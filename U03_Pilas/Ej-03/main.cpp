@@ -1,8 +1,7 @@
 #include <iostream>
 #include "../Pila/Pila.h"
-using namespace std;
 
 int main() {
-    //funcion agregada en pila.h
+    std::cout << "Ejercicio 03/03\n" << std::endl;
     return 0;
 }

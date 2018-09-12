@@ -1,20 +1,7 @@
-#include <iostream>Pila<char>
+#include <iostream>
 #include "../Pila/Pila.h"
-using namespace std;
 
 int main() {
-    Pila<int> hola;
-    Pila<int> chau;
-    bool iguales = false;
-    while(!hola.esVacia() && !chau.esVacia()){
-        if(hola.pop() != chau.pop()){
-            iguales = false;
-            break;
-        }
-        else{
-            iguales = true;
-        }
-    }
-    cout << iguales << endl;
+    std::cout << "Ejercicio 03/02\n" << std::endl;
     return 0;
 }

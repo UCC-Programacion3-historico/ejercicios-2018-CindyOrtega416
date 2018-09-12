@@ -1,13 +1,12 @@
 #include <iostream>
-#include "Circulo.h"
-#include "Cuadrado.h"
-#include "Triangulo.h"
-
 using namespace std;
-
-int main() {
-    cout << "Ejercicio 00/01\n" << endl;
-
-
+int main(){
+    int *miPuntero;
+    int num = 5;
+    cout << num << endl;
+    cout << &num << endl;
+    miPuntero = &num ;
+    cout << miPuntero << endl;
+    cout << *miPuntero << endl;
     return 0;
 }

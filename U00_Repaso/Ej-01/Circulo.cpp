@@ -1,4 +1,5 @@
 #include "Circulo.h"
+
 #define PI 3.1415926
 
 float Circulo::getRadio() const {
@@ -10,9 +11,10 @@ void Circulo::setRadio(float radio) {
 }
 
 float Circulo::getPerimetro() {
-    return 2*PI*radio;
+    return 2 * PI * radio;
 }
 
 float Circulo::getSuperficie() {
-    return PI*radio*radio;
+
+    return PI * radio * radio;
 }

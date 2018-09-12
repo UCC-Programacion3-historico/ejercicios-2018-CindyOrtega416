@@ -13,6 +13,8 @@ public:
 
     float getSuperficie();
     float getPerimetro();
+
+
 };
 
 

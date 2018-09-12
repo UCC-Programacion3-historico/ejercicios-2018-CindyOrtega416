@@ -1,17 +1,19 @@
 #ifndef COLA_H
 #define COLA_H
-#include "Nodo.h"
 
 /**
  * Clase que implementa una Cola generica, ya que puede
  * almacenar cualquier tipo de dato T
  * @tparam T cualquier tipo de dato
  */
+
+#include "nodo.h"
+
 template<class T>
 class ColaPrioridades {
 private:
-    Nodo<T> *entrada;
-    Nodo<T> *salida;
+    nodo<T> *entrada;
+    nodo<T> *salida;
 public:
     ColaPrioridades();
 
@@ -52,12 +54,13 @@ ColaPrioridades<T>::~ColaPrioridades() {}
  */
 template<class T>
 void ColaPrioridades<T>::encolar(T dato) {
-    auto *nuevo = new Nodo<T>(dato, nullptr); //hago un nuevo nodo con el dato que apunte a null prque va al ultimo
-    if(entrada != nullptr)
-        entrada->setNext(nuevo); // entrada apunta al nodo nuevo
+    auto *nuevo = new nodo<T>(dato, nullptr);
+    if (entrada != nullptr)
+        entrada->setNext(nuevo);
     else
         salida = nuevo;
-    entrada = nuevo; // nuevo ahora es entrada
+
+    entrada = nuevo;
 }
 
 
@@ -68,17 +71,18 @@ void ColaPrioridades<T>::encolar(T dato) {
  */
 template<class T>
 T ColaPrioridades<T>::desencolar() {
-    if(salida == nullptr)
+    if (salida == nullptr)
         throw 1;
 
-    T data = salida->getDato();
-    Nodo<T> *salida_anterior = salida;
+    T dato = salida->getDato();
+    nodo<T> *salida_anterior = salida;
     salida = salida->getNext();
-    //si cuando actualizo salida, este se hace nulo, la entrada tambien.(cola vacia)
-    if(salida == nullptr)
+
+    if (salida == nullptr)
         entrada = nullptr;
 
-    return data;
+    delete salida_anterior;
+    return dato;
 }
 
 /**
