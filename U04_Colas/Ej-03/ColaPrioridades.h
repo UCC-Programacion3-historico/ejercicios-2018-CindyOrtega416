@@ -1,5 +1,6 @@
 #ifndef COLA_H
 #define COLA_H
+#include "Nodo.h"
 
 /**
  * Clase que implementa una Cola generica, ya que puede
@@ -7,22 +8,20 @@
  * @tparam T cualquier tipo de dato
  */
 
-#include "nodo.h"
-
 #define CANTP 10
 
 
 template<class T>
 class ColaPrioridades {
 private:
-    nodo<T> *entrada[CANTP];
-    nodo<T> *salida;
+    Nodo<T> *entrada[CANTP];
+    Nodo<T> *salida;
 public:
     ColaPrioridades();
 
-    ~ColaPrioridades();
+    ~ColaPrioridades()();
 
-    void encolar(T dato, int p);
+    void encolar(T dato);
 
     T desencolar();
 
@@ -36,9 +35,10 @@ public:
  */
 template<class T>
 ColaPrioridades<T>::ColaPrioridades() {
-    for (int i = 0; i < CANTP; i++) {
+    for(int i = 0 ; i < CANTP ; i++){
         entrada[i] = nullptr;
     }
+
     salida = nullptr;
 }
 
@@ -49,6 +49,7 @@ ColaPrioridades<T>::ColaPrioridades() {
  * @tparam T
  */
 template<class T>
+
 ColaPrioridades<T>::~ColaPrioridades() {}
 
 
@@ -59,23 +60,16 @@ ColaPrioridades<T>::~ColaPrioridades() {}
  */
 template<class T>
 void ColaPrioridades<T>::encolar(T dato, int p) {
-    auto *nuevo = new nodo<T>(dato, p);
-
-    if (entrada[p] != nullptr) {
+    auto *nuevo = new Nodo<T>(dato, p);//hago un nuevo nodo con el dato que apunte a null prque va al ultimo
+    if(entrada[p] != nullptr){
         nuevo->setNext(entrada[p]->getNext());
-        entrada[p]->setNext(nuevo);
-    } else {
-        nuevo->setNext(salida);
-        salida = nuevo;
+        entrada[p]->setNext(nuevo); // entrada apunta al nodo nuevo
     }
-
-    // Muevo todos los elementos de prioridades superiores
-    // que hayan estado en el mismo lugar.
-    for (int i = p + 1; i < CANTP; i++) {
-        if (entrada[p] == entrada[i])
-            entrada[i] = nuevo;
-    }
-    entrada[p] = nuevo;
+   for(int i = p+1; i < CANTP; i++){
+       if(entrada[p] == entrada[i])
+        entrada[i] = nuevo;
+   }
+   entrada[p] = nuevo;
 }
 
 
@@ -86,20 +80,17 @@ void ColaPrioridades<T>::encolar(T dato, int p) {
  */
 template<class T>
 T ColaPrioridades<T>::desencolar() {
-    if (salida == nullptr)
+    if(salida == nullptr)
         throw 1;
 
-    T dato = salida->getDato();
-    nodo<T> *salida_anterior = salida;
+    T data = salida->getDato();
+    Nodo<T> *salida_anterior = salida;
     salida = salida->getNext();
+    //si cuando actualizo salida, este se hace nulo, la entrada tambien.(cola vacia)
+    if(salida == nullptr)
+        entrada = nullptr;
 
-    for (int i = 0; i < CANTP; i++) {
-        if (salida_anterior == entrada[i])
-            entrada[i] = nullptr;
-    }
-
-    delete salida_anterior;
-    return dato;
+    return data;
 }
 
 /**
@@ -112,4 +103,4 @@ bool ColaPrioridades<T>::esVacia() {
     return salida == nullptr;
 }
 
-#endif
+#endif //LISTA_H

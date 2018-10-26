@@ -3,10 +3,12 @@
 
 int main() {
     std::cout << "Ejercicio 01/01\n" << std::endl;
+    std::cout << potencia(2,31) << std::endl;
+    std::cout << potencia(2,5) << std::endl;
+    std::cout << potencia(2,3) << std::endl;
+    std::cout << potencia(2,15) << std::endl;
+    std::cout << potencia(2,12) << std::endl;
+    std::cout << potencia(2,14) << std::endl;
 
-    std::cout << potencia(2, 2) << std::endl;
-    std::cout << potencia(2, 16) << std::endl;
-    std::cout << potencia(33, 2) << std::endl;
-    std::cout << potencia(5, 10) << std::endl;
     return 0;
 }

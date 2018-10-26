@@ -1,47 +1,46 @@
 //
-// Created by martin on 29/08/18.
+// Created by alumno on 29/08/18.
 //
+
 #ifndef PROGRAMACION3_NODO_H
 #define PROGRAMACION3_NODO_H
 
-template<class T>
-class nodo {
+template <class T>
+class Nodo {
 private:
-    T dato;
-    nodo *next;
     int prioridad;
+    T dato;
+    Nodo *next;
 public:
-    nodo(T d, int p) {
+    Nodo(T d, int p){
         dato = d;
         next = nullptr;
         prioridad = p;
     }
 
-    nodo(T d, nodo *n, int p) {
+    Nodo(T d, Nodo *n, int p){
         dato = d;
         next = n;
         prioridad = p;
     }
 
-    T getDato() {
+
+    T getDato() const {
         return dato;
     }
 
-    /**
-     *
-     * @param d
-     */
-    void setDato(T d) {
-        dato = d;
+    void setDato(T dato) {
+        Nodo::dato = dato;
     }
 
-    nodo *getNext() {
+    Nodo *getNext() const {
         return next;
     }
 
-    void setNext(nodo *n) {
-        next = n;
+    void setNext(Nodo *next) {
+        Nodo::next = next;
     }
+
 };
 
 
